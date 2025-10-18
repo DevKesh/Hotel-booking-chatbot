@@ -1,0 +1,27 @@
+version: "3.1"
+
+stories:
+  - story: happy path
+    steps:
+      - intent: search_restaurants
+      - action: utter_ask_cuisine
+      - intent: specify_preferences
+        entities:
+          - cuisine
+      - action: utter_ask_price
+      - intent: specify_preferences
+        entities:
+          - price
+      - action: utter_ask_people
+      - intent: specify_preferences
+        entities:
+          - people
+      - action: action_suggest_restaurants
+      - intent: select_restaurant
+        entities:
+          - restaurant_choice
+      - action: utter_ask_time
+      - intent: specify_preferences
+        entities:
+          - time
+      - action: action_book_restaurant

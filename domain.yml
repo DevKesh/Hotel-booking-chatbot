@@ -1,0 +1,71 @@
+version: "3.1"
+
+intents:
+  - greet
+  - search_restaurants
+  - specify_preferences
+  - request_booking
+  - select_restaurant
+  - affirm
+  - deny
+  - goodbye
+
+entities:
+  - price
+  - cuisine
+  - people
+  - time
+  - restaurant_choice
+
+slots:
+  cuisine:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: cuisine
+  price:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: price
+  people:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: people
+  time:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: time
+  restaurant_choice:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: restaurant_choice
+
+responses:
+  utter_greet:
+    - text: "Hey there! I'm GastroGuide! I can help you find restaurants and make bookings. What are you craving?"
+
+  utter_ask_cuisine:
+    - text: "What type of cuisine? (Italian, Chinese, Indian, Mexican)"
+
+  utter_ask_price:
+    - text: "What's your budget? (cheap, moderate, expensive)"
+
+  utter_ask_people:
+    - text: "For how many people?"
+
+  utter_ask_time:
+    - text: "What time would you like to book?"
+
+  utter_booking_success:
+    - text: "🎉 Confirmed! Your table at {restaurant_name} for {people} people at {time}. Booking ID: {booking_id}"
+
+  utter_goodbye:
+    - text: "Enjoy your meal! 🍕"
+
+actions:
+  - action_suggest_restaurants
+  - action_book_restaurant

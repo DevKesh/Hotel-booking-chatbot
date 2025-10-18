@@ -1,0 +1,54 @@
+version: "3.1"
+
+nlu:
+  - intent: greet
+    examples: |
+      - hi
+      - hello
+      -Hello
+      - hey
+
+  - intent: search_restaurants
+    examples: |
+      - find me a restaurant
+      - I'm looking for food
+      - show me restaurants
+      - I want to eat out
+
+  - intent: specify_preferences
+    examples: |
+      - [Italian](cuisine) food
+      - [cheap](price) restaurants
+      - for [4](people) people
+      - at [7 PM](time)
+
+  - intent: request_booking
+    examples: |
+      - book a table
+      - make a reservation
+      - I want to book
+
+  - intent: select_restaurant
+    examples: |
+      - [Skyline Bistro](restaurant_choice)
+      - [Urban Grill](restaurant_choice)
+      - [Metro Cafe](restaurant_choice)
+      - [Harbor Lights](restaurant_choice)
+      - I choose [Skyline Bistro](restaurant_choice)
+      - Book [Urban Grill](restaurant_choice)
+
+  - intent: affirm
+    examples: |
+      - yes
+      - sure
+      - that works
+
+  - intent: deny
+    examples: |
+      - no
+      - not really
+
+  - intent: goodbye
+    examples: |
+      - thanks bye
+      - goodbye
