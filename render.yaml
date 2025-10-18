@@ -1,0 +1,7 @@
+services:
+  - type: web
+    name: gastroguide-bot
+    env: python
+    plan: free
+    buildCommand: pip install -r requirements.txt && python -m rasa train
+    startCommand: python -m rasa run --cors "*" --enable-api --port $PORT
