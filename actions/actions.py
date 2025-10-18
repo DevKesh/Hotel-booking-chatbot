@@ -11,22 +11,8 @@ class ActionSuggestRestaurants(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
-        cuisine = tracker.get_slot("cuisine")
-        price = tracker.get_slot("price")
-
-        # Simple restaurant options
-        restaurants = [
-            {"name": "Skyline Bistro", "desc": "Amazing city views 🌆"},
-            {"name": "Urban Grill", "desc": "Modern American cuisine"},
-            {"name": "Metro Cafe", "desc": "Cozy spot for dates 💕"}
-        ]
-
-        response = f"Here are great {price} {cuisine} options:\n"
-        for i, place in enumerate(restaurants, 1):
-            response += f"{i}. {place['name']} - {place['desc']}\n"
-        response += "\nJust say the restaurant name to book!"
-
-        dispatcher.utter_message(text=response)
+        # In our guided flow, we use utter_suggest_restaurants response
+        # This action is kept for consistency but doesn't need complex logic
         return []
 
 class ActionBookRestaurant(Action):
@@ -38,17 +24,16 @@ class ActionBookRestaurant(Action):
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
         people = tracker.get_slot("people") or "2"
-        time = tracker.get_slot("time") or "7 PM"
+        time = tracker.get_slot("time") or "7:00 PM"
         restaurant_choice = tracker.get_slot("restaurant_choice")
+        cuisine = tracker.get_slot("cuisine")
+        dietary = tracker.get_slot("dietary") or "none"
 
-        if restaurant_choice:
-            restaurant_name = restaurant_choice
-        else:
-            restaurant_name = "a wonderful restaurant"
-
-        booking_id = f"GG{random.randint(1000, 9999)}"
+        # Simple booking confirmation
+        booking_id = f"RS{random.randint(1000, 9999)}"
 
         dispatcher.utter_message(
-            text=f"🎉 Excellent choice! Your table at {restaurant_name} is confirmed for {people} people at {time}. Your booking ID is {booking_id}."
+            text=f"✅ Booking confirmed!\n\n• Restaurant: {restaurant_choice}\n• Time: {time}\n• People: {people}\n• Dietary: {dietary}\n• Booking ID: {booking_id}\n\nEnjoy your meal! 🎉"
         )
+
         return []

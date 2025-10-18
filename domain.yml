@@ -4,18 +4,19 @@ intents:
   - greet
   - search_restaurants
   - specify_preferences
-  - request_booking
   - select_restaurant
+  - book_table
   - affirm
   - deny
   - goodbye
 
 entities:
-  - price
   - cuisine
+  - price
   - people
-  - time
+  - dietary
   - restaurant_choice
+  - time
 
 slots:
   cuisine:
@@ -33,38 +34,52 @@ slots:
     mappings:
       - type: from_entity
         entity: people
-  time:
+  dietary:
     type: text
     mappings:
       - type: from_entity
-        entity: time
+        entity: dietary
   restaurant_choice:
     type: text
     mappings:
       - type: from_entity
         entity: restaurant_choice
+  time:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: time
 
 responses:
   utter_greet:
-    - text: "Hey there! I'm GastroGuide! I can help you find restaurants and make bookings. What are you craving?"
+    - text: "Hello! I can help you find and book restaurants. Would you like to:\n• 'find restaurants' 🍽️\n• 'book a table' 📅"
 
   utter_ask_cuisine:
-    - text: "What type of cuisine? (Italian, Chinese, Indian, Mexican)"
+    - text: "What type of cuisine would you like? Please choose:\n• 'Italian' 🍝\n• 'Chinese' 🥢\n• 'Indian' 🍛\n• 'Mexican' 🌮\n• 'Japanese' 🍣"
 
   utter_ask_price:
-    - text: "What's your budget? (cheap, moderate, expensive)"
+    - text: "What's your budget? Please choose:\n• '$' (Budget)\n• '$$' (Moderate)\n• '$$$' (Expensive)"
 
   utter_ask_people:
-    - text: "For how many people?"
+    - text: "How many people? Please choose:\n• '1' person\n• '2' people\n• '4' people\n• '6' people"
+
+  utter_ask_dietary:
+    - text: "Any dietary preferences? Please choose:\n• 'none'\n• 'vegetarian' 🌱\n• 'vegan' 🥑\n• 'gluten-free' 🌾"
+
+  utter_suggest_restaurants:
+    - text: "Based on your preferences, I recommend:\n\n1. **'Mario's Trattoria'** 🍝 (Italian, $$)\n2. **'Dragon Palace'** 🥢 (Chinese, $)\n3. **'Taj Mahal'** 🍛 (Indian, $$)\n4. **'Taco Fiesta'** 🌮 (Mexican, $)\n5. **'Sakura Sushi'** 🍣 (Japanese, $$$)\n\nPlease type the restaurant name you'd like to book!"
 
   utter_ask_time:
-    - text: "What time would you like to book?"
+    - text: "What time would you like to book? Please choose:\n• '6:00 PM'\n• '7:00 PM'\n• '7:30 PM'\n• '8:00 PM'\n• '8:30 PM'"
 
-  utter_booking_success:
-    - text: "🎉 Confirmed! Your table at {restaurant_name} for {people} people at {time}. Booking ID: {booking_id}"
+  utter_booking_confirmation:
+    - text: "✅ Perfect! I've booked a table for {people} people at {restaurant_choice} for {time}! Your {dietary} preferences have been noted. Enjoy your meal! 🎉"
+
+  utter_help_offer:
+    - text: "Would you like to:\n• 'find restaurants' 🔄\n• 'book another table' 📅\n• 'no thanks' 👋"
 
   utter_goodbye:
-    - text: "Enjoy your meal! 🍕"
+    - text: "Thank you! Enjoy your dining experience! 🍽️✨"
 
 actions:
   - action_suggest_restaurants

@@ -5,50 +5,132 @@ nlu:
     examples: |
       - hi
       - hello
-      -Hello
       - hey
+      - good morning
+      - hello there
 
   - intent: search_restaurants
     examples: |
-      - find me a restaurant
-      - I'm looking for food
-      - show me restaurants
+      - find restaurants
+      - looking for food
+      - find places to eat
       - I want to eat out
+      - show me restaurants
+      - find restaurants
+      - find restaurants
+
+  - intent: book_table
+    examples: |
+      - book a table
+      - make reservation
+      - reserve table
+      - I want to book
+      - book a table
+      - book a table
 
   - intent: specify_preferences
     examples: |
-      - [Italian](cuisine) food
-      - [cheap](price) restaurants
-      - for [4](people) people
-      - at [7 PM](time)
-
-  - intent: request_booking
-    examples: |
-      - book a table
-      - make a reservation
-      - I want to book
+      # === CUISINES (All options shown to user) ===
+      - [Italian](cuisine)
+      - [italian](cuisine)
+      - [Chinese](cuisine)
+      - [chinese](cuisine)
+      - [Indian](cuisine)
+      - [indian](cuisine)
+      - [Mexican](cuisine)
+      - [mexican](cuisine)
+      - [Japanese](cuisine)
+      - [japanese](cuisine)
+      
+      # === PRICES (All options shown to user) ===
+      - [$](price)
+      - [$$](price)
+      - [$$$](price)
+      - [budget](price)
+      - [moderate](price)
+      - [expensive](price)
+      
+      # === PEOPLE (All options shown to user) ===
+      - [1](people)
+      - [2](people)
+      - [4](people)
+      - [6](people)
+      - [1 person](people)
+      - [2 people](people)
+      - [4 people](people)
+      - [6 people](people)
+      - [one](people)
+      - [two](people)
+      - [four](people)
+      - [six](people)
+      
+      # === DIETARY (All options shown to user) ===
+      - [none](dietary)
+      - [vegetarian](dietary)
+      - [vegan](dietary)
+      - [gluten-free](dietary)
+      - [gluten free](dietary)
+      - [no restrictions](dietary)
+      
+      # === TIMES (All options shown to user) ===
+      - [6:00 PM](time)
+      - [7:00 PM](time)
+      - [7:30 PM](time)
+      - [8:00 PM](time)
+      - [8:30 PM](time)
+      - [6:00](time)
+      - [7:00](time)
+      - [7:30](time)
+      - [8:00](time)
+      - [8:30](time)
+      - [6pm](time)
+      - [7pm](time)
+      - [7:30pm](time)
+      - [8pm](time)
+      - [8:30pm](time)
 
   - intent: select_restaurant
     examples: |
-      - [Skyline Bistro](restaurant_choice)
-      - [Urban Grill](restaurant_choice)
-      - [Metro Cafe](restaurant_choice)
-      - [Harbor Lights](restaurant_choice)
-      - I choose [Skyline Bistro](restaurant_choice)
-      - Book [Urban Grill](restaurant_choice)
+      # === RESTAURANTS (All options shown to user) ===
+      - [Mario's Trattoria](restaurant_choice)
+      - [mario's trattoria](restaurant_choice)
+      - [marios trattoria](restaurant_choice)
+      - [Dragon Palace](restaurant_choice)
+      - [dragon palace](restaurant_choice)
+      - [Taj Mahal](restaurant_choice)
+      - [taj mahal](restaurant_choice)
+      - [Taco Fiesta](restaurant_choice)
+      - [taco fiesta](restaurant_choice)
+      - [Sakura Sushi](restaurant_choice)
+      - [sakura sushi](restaurant_choice)
+      - [option 1](restaurant_choice)
+      - [option 2](restaurant_choice)
+      - [option 3](restaurant_choice)
+      - [option 4](restaurant_choice)
+      - [option 5](restaurant_choice)
+      - [first one](restaurant_choice)
+      - [second one](restaurant_choice)
+      - [third one](restaurant_choice)
 
   - intent: affirm
     examples: |
+      - find restaurants
+      - book another table
       - yes
       - sure
-      - that works
+      - okay
 
   - intent: deny
     examples: |
+      - no thanks
       - no
-      - not really
+      - that's all
+      - not now
 
   - intent: goodbye
     examples: |
-      - thanks bye
       - goodbye
+      - bye
+      - no thanks
+      - that's all
+      - end conversation

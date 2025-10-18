@@ -1,27 +1,104 @@
 version: "3.1"
 
 stories:
-  - story: happy path
+  - story: complete restaurant search and booking
     steps:
+      - intent: greet
+      - action: utter_greet
       - intent: search_restaurants
       - action: utter_ask_cuisine
       - intent: specify_preferences
         entities:
-          - cuisine
+          - cuisine: "Italian"
       - action: utter_ask_price
       - intent: specify_preferences
         entities:
-          - price
+          - price: "$$"
       - action: utter_ask_people
       - intent: specify_preferences
         entities:
-          - people
-      - action: action_suggest_restaurants
+          - people: "2"
+      - action: utter_ask_dietary
+      - intent: specify_preferences
+        entities:
+          - dietary: "none"
+      - action: utter_suggest_restaurants
       - intent: select_restaurant
         entities:
-          - restaurant_choice
+          - restaurant_choice: "Mario's Trattoria"
       - action: utter_ask_time
       - intent: specify_preferences
         entities:
-          - time
-      - action: action_book_restaurant
+          - time: "7:00 PM"
+      - action: utter_booking_confirmation
+      - action: utter_help_offer
+      - intent: goodbye
+      - action: utter_goodbye
+
+  - story: direct booking flow
+    steps:
+      - intent: book_table
+      - action: utter_ask_cuisine
+      - intent: specify_preferences
+        entities:
+          - cuisine: "Chinese"
+      - action: utter_ask_price
+      - intent: specify_preferences
+        entities:
+          - price: "$"
+      - action: utter_ask_people
+      - intent: specify_preferences
+        entities:
+          - people: "4"
+      - action: utter_ask_dietary
+      - intent: specify_preferences
+        entities:
+          - dietary: "vegetarian"
+      - action: utter_suggest_restaurants
+      - intent: select_restaurant
+        entities:
+          - restaurant_choice: "Dragon Palace"
+      - action: utter_ask_time
+      - intent: specify_preferences
+        entities:
+          - time: "8:00 PM"
+      - action: utter_booking_confirmation
+      - action: utter_help_offer
+      - intent: goodbye
+      - action: utter_goodbye
+
+  - story: user wants to book another table
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: search_restaurants
+      - action: utter_ask_cuisine
+      - intent: specify_preferences
+        entities:
+          - cuisine: "Japanese"
+      - action: utter_ask_price
+      - intent: specify_preferences
+        entities:
+          - price: "$$$"
+      - action: utter_ask_people
+      - intent: specify_preferences
+        entities:
+          - people: "1"
+      - action: utter_ask_dietary
+      - intent: specify_preferences
+        entities:
+          - dietary: "gluten-free"
+      - action: utter_suggest_restaurants
+      - intent: select_restaurant
+        entities:
+          - restaurant_choice: "Sakura Sushi"
+      - action: utter_ask_time
+      - intent: specify_preferences
+        entities:
+          - time: "6:00 PM"
+      - action: utter_booking_confirmation
+      - action: utter_help_offer
+      - intent: affirm
+      - action: utter_greet
+      - intent: goodbye
+      - action: utter_goodbye

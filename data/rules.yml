@@ -1,12 +1,63 @@
 version: "3.1"
 
 rules:
-  - rule: greet
+  - rule: Greeting and immediate options
     steps:
       - intent: greet
       - action: utter_greet
 
-  - rule: goodbye
+  - rule: Start restaurant search
+    steps:
+      - intent: search_restaurants
+      - action: utter_ask_cuisine
+
+  - rule: Direct booking request
+    steps:
+      - intent: book_table
+      - action: utter_ask_cuisine
+
+  - rule: Handle cuisine choice
+    steps:
+      - intent: specify_preferences
+        entities:
+          - cuisine
+      - action: utter_ask_price
+
+  - rule: Handle price choice
+    steps:
+      - intent: specify_preferences
+        entities:
+          - price
+      - action: utter_ask_people
+
+  - rule: Handle people choice
+    steps:
+      - intent: specify_preferences
+        entities:
+          - people
+      - action: utter_ask_dietary
+
+  - rule: Handle dietary and show restaurants
+    steps:
+      - intent: specify_preferences
+        entities:
+          - dietary
+      - action: utter_suggest_restaurants
+
+  - rule: Handle restaurant selection
+    steps:
+      - intent: select_restaurant
+      - action: utter_ask_time
+
+  - rule: Complete booking
+    steps:
+      - intent: specify_preferences
+        entities:
+          - time
+      - action: utter_booking_confirmation
+      - action: utter_help_offer
+
+  - rule: End conversation
     steps:
       - intent: goodbye
       - action: utter_goodbye
